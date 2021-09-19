@@ -3,17 +3,14 @@ Treehouse FSJS Techdegree:
 project 1 - A Random Quote Generator
 ******************************************/
 
-// For assistance: 
-// Check the "Project Resources" section of the project instructions
-// Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
-
 /*** 
  * `quotes` array 
 ***/
 let quotes = [
   {
     'quote': 'It is only with the heart that one can see rightly; what is essential is invisible to the eye.',
-    'source': 'The Fox from The Little Prince'
+    'source': 'The Fox',
+    'citation': 'The Little Prince',
   },
   {
     'quote': 'The horizon of many people is a circle with zero radius which they call their point of view.',
@@ -29,26 +26,43 @@ let quotes = [
   },
   {
     'quote': 'Life is either a daring adventure or nothing.',
-    'source': 'Helen Keller'
+    'source': 'Helen Keller',
+    'year': 1956
   },
 ]
 
+/***
+ * `getRandomQuote` function generates a random number and returns a random quote from the quotes array
+***/
+function getRandomQuote() {
+  let random = Math.floor(Math.random() * quotes.length)
+  return quotes[random]
+}
 
 /***
- * `getRandomQuote` function
+ * `printQuote` function displays a properly formatted quote on the webpage
 ***/
+function printQuote() {
+  let randomQuote = getRandomQuote()
+  let html = `<p class="quote">${randomQuote.quote}</p>
+  <p class="source">${randomQuote.source}`
 
+  //checks if a citation is provided
+  if (randomQuote.citation !== undefined) {
+    html += `<span class="citation">${randomQuote.citation}</span>`
+  }
+  //checks if a year is provided
+  if (randomQuote.year !== undefined) {
+    html += `<span class="year">${randomQuote.year}</span>`
+  }
 
+  html += `</p>`
 
-/***
- * `printQuote` function
-***/
-
-
+  return document.getElementById('quote-box').innerHTML = html
+}
 
 /***
  * click event listener for the print quote button
- * DO NOT CHANGE THE CODE BELOW!!
 ***/
 
 document.getElementById('load-quote').addEventListener("click", printQuote, false);
