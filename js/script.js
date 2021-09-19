@@ -10,7 +10,7 @@ let quotes = [
   {
     'quote': 'It is only with the heart that one can see rightly; what is essential is invisible to the eye.',
     'source': 'The Fox',
-    'citation': 'The Little Prince',
+    'citation': 'The Little Prince'
   },
   {
     'quote': 'The horizon of many people is a circle with zero radius which they call their point of view.',
@@ -28,7 +28,7 @@ let quotes = [
     'quote': 'Life is either a daring adventure or nothing.',
     'source': 'Helen Keller',
     'year': 1956
-  },
+  }
 ]
 
 /***
@@ -48,11 +48,11 @@ function printQuote() {
   <p class="source">${randomQuote.source}`
 
   //checks if a citation is provided
-  if (randomQuote.citation !== undefined) {
+  if (randomQuote.citation) {
     html += `<span class="citation">${randomQuote.citation}</span>`
   }
   //checks if a year is provided
-  if (randomQuote.year !== undefined) {
+  if (randomQuote.year) {
     html += `<span class="year">${randomQuote.year}</span>`
   }
 
